@@ -1,11 +1,21 @@
 const router = require('express').Router();
 const errors = require('../helpers/errors');
+const { validate, body } = require('../helpers/validator');
 const paginator = require('../helpers/paginator');
 const filter = require('../helpers/filter');
 const sorter = require('../helpers/sorter');
 const axios = require('axios');
 
 router.post('/videodata',
+    validate([
+        body('filter').optional().isString(),
+        body('pagination').optional().isObject().custom(value => {
+            return value.page && value.per_page;
+        }),
+        body('sorting').optional().isObject().custom(value => {
+            return value.by && value.type;
+        })
+    ]),
     errors.wrap(async (req, res, next) => {
         const page_params = req.body.pagination;
         const filter_params = req.body.filter;
