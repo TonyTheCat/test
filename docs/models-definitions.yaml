@@ -1,0 +1,48 @@
+definitions:
+  Videodata:
+    type: "object"
+    properties:
+      in_frame:
+        type: "integer"
+        format: "int32"
+      out_frame:
+        type: "integer"
+        format: "int32"
+      duration:
+        type: "integer"
+        format: "int32"
+      content:
+        type: "object"
+        properties:
+          value: 
+            type: "array"
+            items:
+              type: "string"
+          labels:
+            type: "array"
+            items:
+              type: "string"
+          graphics_type_value:
+            type: "array"
+            items:
+              type: "string"
+          location:
+            type: "array"
+            items:
+              type: "string"
+          sample_frame:
+            type: "integer"
+            format: "int32"
+      data_type_id:
+        type: "string"
+      tech_id:
+        type: "string"
+
+  APIError:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"

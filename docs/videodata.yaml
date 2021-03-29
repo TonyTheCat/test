@@ -1,0 +1,36 @@
+paths:
+  /videodata:
+    get:
+      tags:
+        - videodata
+      summary: Receive videodata
+      parameters:
+        - name: sort
+          in: query
+          description: Use "sort" for sorting by in_frame or out_frame in ascending or descending order
+          required: false
+          type: string
+        - name: filter
+          in: query
+          description: Use "filter" for filtering by content.location
+          required: false
+          type: string
+        - name: page
+          in: query
+          description: Use "page" for fetching particular page
+          required: false
+          type: string
+        - name: size
+          in: query
+          description: Use "size" to define max nymbers of pages to fetch
+          required: false
+          type: string  
+      responses:
+        200:
+          description: Videodata list
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/definitions/Videodata"
