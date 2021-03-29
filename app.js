@@ -5,6 +5,7 @@ const config = require('config');
 const cors = require('cors');
 const recursive = require('recursive-readdir-sync');
 const logger = require('morgan');
+const auth = require('./helpers/auth');
 
 const {handleError} = require('./helpers/errors');
 
@@ -19,6 +20,8 @@ app.use(cors({origin: '*'}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(auth);
 
 // collect controllers recursively
 recursive(`${__dirname}/routes`)

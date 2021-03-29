@@ -19,7 +19,6 @@ for (const className in errorTypes) {
             super();
             this.statusCode = errorTypes[className];
             this.message = message;
-
         }
     }})[className]
 }
